@@ -1,13 +1,26 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 function Header() {
+  const activeNavStyles = ({ isActive }) => ({
+    color: isActive ? "red" : "",
+    textDecorationLine: isActive ? "underline" : "none",
+  });
+
   return (
     <HeaderContainer>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/teams">Teams</NavLink>
-      <NavLink to="/teams/new">New Team</NavLink>
+      <NavLink to="/" style={activeNavStyles}>
+        Home
+      </NavLink>
+      <NavLink to="/about" style={activeNavStyles}>
+        About
+      </NavLink>
+      <NavLink to="/teams" style={activeNavStyles}>
+        Teams
+      </NavLink>
+      <NavLink to="/teams/new" style={activeNavStyles}>
+        New Team
+      </NavLink>
     </HeaderContainer>
   );
 }
@@ -22,5 +35,3 @@ const HeaderContainer = styled.header`
   align-items: center;
   padding: 0 40px;
 `;
-
-const NavLink = styled(Link)``;
